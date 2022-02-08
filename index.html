@@ -31,11 +31,17 @@
                                         {{movie.value}}
                                     </dd>
                                 </dl>
-                            </div>
-                            <div class="card-body"><a v-bind:href="item.href" class="btn btn-primary">Ver</a></div>
+                            </div>                            
                         </div> 
                     </div>
                 </div>
+                <div class="item-data">
+                    <a v-bind:href="item.href" class="btn btn-primary">Ver</a>
+                    <a v-bind:href="editForm" class="btn btn-secondary">Editar</a>
+                </div>
+
+
+
             </div>    
             <!--
                  TODO: Aplicación VueJS. Ver archivo ./js/script.js
@@ -43,6 +49,7 @@
                - Para cada item: (https://vuejs.org/v2/guide/index.html#Conditionals-and-Loops)
                  - Crear un componente item-data
             -->
+
 
         </div>
 
