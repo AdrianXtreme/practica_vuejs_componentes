@@ -22,22 +22,13 @@
                 <div class="container">
                     <div class="item-data">
                         <div class="card-group">
-                            <div class="card" v-for="item in col.collection.items">
-                                <div class="card-body" v-for="movie in item.data">
-                                    <dl>
-                                        <dt class="card-title">
-                                            {{ movie.prompt }}
-                                        </dt>
-                                        <dd class="card-text">
-                                            {{movie.value}}
-                                        </dd>
-                                    </dl>
-                                </div>
-                                    <div class="card-body">
-                                        <a v-bind:href="item.href" class="btn btn-primary">Ver</a>
-                                        <a v-bind:href="editForm" class="btn btn-secondary">Editar</a>
-                                    </div>
-                            </div> 
+                            <item-data class="card shadow text-center" 
+                                v-for="item in col.collection.items" 
+                                v-if="!editFilm.includes(col.collection.items.indexOf(item))" 
+                                :film="item"
+                                :index="col.collection.items.indexOf(item)"
+                                :key="col.collection.items.indexOf(item)">
+                            </item-data>
                         </div>
                         <div class="edit-form">
                             
