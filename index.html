@@ -39,11 +39,43 @@
 
         <!-- Plantilla para el componente edit-form -->
         <script type="text/x-template" id="editForm">
-            
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <dl v-for="object in film.data">
+                        <dt> {{ object.prompt }} </dt>
+                        <input type="text" 
+                            v-if="object.prompt != 'Description'"
+                            v-bind:id="object.name+index"
+                            v-model="object.value"
+                        />
+                        <textarea type="text"
+                            v-else
+                            v-bind:id="object.name+index"
+                            v-model="object.value"
+                        />
+                    </dl>
+                </div>
+                <div class="card-footer text-center">
+                    <input type="button" v-on:click="closeForm(index)" value="Cerrar" class="btn btn-primary w-50"/>
+                </div>
+            </div>
         </script>
 
         <!-- Template de ItemData -->
-        
+        <script type="text/x-template" id="itemData">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <dl v-for="film in film.data">
+                        <dt> {{ film.prompt }} </dt>
+                        <dd> {{ film.value }} </dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-center">
+                    <a type="button" target="_blank" class="btn btn-primary w-25" v-bind:href="film.href"> Ver más </a>
+                    <input type="button" value="Editar" v-on:click="toggleEditFormVisibility(index)" class="btn btn-secondary w-25">
+                </div> 
+            </div>
+        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <script src="js/script.js"></script>
